@@ -36,8 +36,12 @@ public class frmIndex extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
-        menuSocios = new javax.swing.JMenuItem();
-        menuPeliculas = new javax.swing.JMenuItem();
+        mnuSocios = new javax.swing.JMenu();
+        mnuNuevoSocio = new javax.swing.JMenuItem();
+        mnuListaSocios = new javax.swing.JMenuItem();
+        mnuPeliculas = new javax.swing.JMenu();
+        mnuNuevaPelicula = new javax.swing.JMenuItem();
+        mnuListaPelicula = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuPrecios = new javax.swing.JMenuItem();
         menuMovimientos = new javax.swing.JMenu();
@@ -47,7 +51,7 @@ public class frmIndex extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bienvenido");
         setIconImage(getIconImage());
-        setPreferredSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
         setResizable(false);
 
         jMenuBar1.setForeground(new java.awt.Color(204, 204, 204));
@@ -56,25 +60,48 @@ public class frmIndex extends javax.swing.JFrame {
         menuArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoArchivos.png"))); // NOI18N
         menuArchivo.setText("Archivos");
 
-        menuSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoSocios.png"))); // NOI18N
-        menuSocios.setText("Socios");
-        menuSocios.setPreferredSize(new java.awt.Dimension(200, 40));
-        menuSocios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSociosActionPerformed(evt);
-            }
-        });
-        menuArchivo.add(menuSocios);
+        mnuSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoSocios.png"))); // NOI18N
+        mnuSocios.setText("Socios");
+        mnuSocios.setPreferredSize(new java.awt.Dimension(200, 40));
 
-        menuPeliculas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoPeliculas.png"))); // NOI18N
-        menuPeliculas.setText("Peliculas");
-        menuPeliculas.setPreferredSize(new java.awt.Dimension(200, 40));
-        menuPeliculas.addActionListener(new java.awt.event.ActionListener() {
+        mnuNuevoSocio.setText("Nuevo Socio");
+        mnuNuevoSocio.setPreferredSize(new java.awt.Dimension(200, 40));
+        mnuNuevoSocio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPeliculasActionPerformed(evt);
+                mnuNuevoSocioActionPerformed(evt);
             }
         });
-        menuArchivo.add(menuPeliculas);
+        mnuSocios.add(mnuNuevoSocio);
+
+        mnuListaSocios.setText("Lista Socios");
+        mnuListaSocios.setPreferredSize(new java.awt.Dimension(200, 40));
+        mnuListaSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListaSociosActionPerformed(evt);
+            }
+        });
+        mnuSocios.add(mnuListaSocios);
+
+        menuArchivo.add(mnuSocios);
+
+        mnuPeliculas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoPeliculas.png"))); // NOI18N
+        mnuPeliculas.setText("Peliculas");
+        mnuPeliculas.setPreferredSize(new java.awt.Dimension(200, 40));
+
+        mnuNuevaPelicula.setText("Nueva Pelicula");
+        mnuNuevaPelicula.setPreferredSize(new java.awt.Dimension(200, 40));
+        mnuPeliculas.add(mnuNuevaPelicula);
+
+        mnuListaPelicula.setText("Lista Peliculas");
+        mnuListaPelicula.setPreferredSize(new java.awt.Dimension(200, 40));
+        mnuListaPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuListaPeliculaActionPerformed(evt);
+            }
+        });
+        mnuPeliculas.add(mnuListaPelicula);
+
+        menuArchivo.add(mnuPeliculas);
         menuArchivo.add(jSeparator1);
 
         menuPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/iconoPrecios.png"))); // NOI18N
@@ -123,25 +150,29 @@ public class frmIndex extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSociosActionPerformed
-        frmSocios Socio = new frmSocios();
-        Socio.setVisible(true);
-    }//GEN-LAST:event_menuSociosActionPerformed
-
-    private void menuPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPeliculasActionPerformed
-        frmPelicula frmPelicula = new frmPelicula();
-        frmPelicula.setVisible(true);
-    }//GEN-LAST:event_menuPeliculasActionPerformed
-
     private void menuPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPreciosActionPerformed
-        frmPrecios frmPrecios = new frmPrecios();
-        frmPrecios.setVisible(true);
+        frmPrecios ventanaPrecios = new frmPrecios();
+        ventanaPrecios.setVisible(true);
     }//GEN-LAST:event_menuPreciosActionPerformed
 
     private void menuAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlquilerActionPerformed
-        frmAlquiler frmAlquiler = new frmAlquiler();
-        frmAlquiler.setVisible(true);
+        frmAlquiler ventanaAlquiler = new frmAlquiler();
+        ventanaAlquiler.setVisible(true);
     }//GEN-LAST:event_menuAlquilerActionPerformed
+
+    private void mnuListaSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaSociosActionPerformed
+        frmListaSocios ventanaListaSocios = new frmListaSocios();
+        ventanaListaSocios.setVisible(true);
+    }//GEN-LAST:event_mnuListaSociosActionPerformed
+
+    private void mnuNuevoSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuNuevoSocioActionPerformed
+        frmSocios ventanaSocio = new frmSocios();
+        ventanaSocio.setVisible(true);
+    }//GEN-LAST:event_mnuNuevoSocioActionPerformed
+
+    private void mnuListaPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuListaPeliculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuListaPeliculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,9 +216,13 @@ public class frmIndex extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAlquiler;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuMovimientos;
-    private javax.swing.JMenuItem menuPeliculas;
     private javax.swing.JMenuItem menuPrecios;
-    private javax.swing.JMenuItem menuSocios;
+    private javax.swing.JMenuItem mnuListaPelicula;
+    private javax.swing.JMenuItem mnuListaSocios;
+    private javax.swing.JMenuItem mnuNuevaPelicula;
+    private javax.swing.JMenuItem mnuNuevoSocio;
+    private javax.swing.JMenu mnuPeliculas;
+    private javax.swing.JMenu mnuSocios;
     // End of variables declaration//GEN-END:variables
 
 //Imagen de fondo
