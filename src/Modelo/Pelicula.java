@@ -16,22 +16,30 @@ public class Pelicula {
     private int añoEstreno;
     private int cantidad;
     private Genero genero;
+    private String tipo;
+    
 
-    public Pelicula(int idPelicula, String titulo, String director, int añoEstreno, int cantidad, Genero genero) {
+    
+
+    public Pelicula(int idPelicula, String titulo, String director, int añoEstreno, int cantidad, Genero genero, String tipo) {
         this.idPelicula = idPelicula;
         this.titulo = titulo;
         this.director = director;
         this.añoEstreno = añoEstreno;
         this.cantidad = cantidad;
         this.genero = genero;
+        this.tipo = tipo;
+        
     }
 
-    public Pelicula(String titulo, String director, int añoEstreno, int cantidad, Genero genero) {
+    public Pelicula(String titulo, String director, int añoEstreno, int cantidad, Genero genero, String tipo) {
         this.titulo = titulo;
         this.director = director;
         this.añoEstreno = añoEstreno;
         this.cantidad = cantidad;
         this.genero = genero;
+        this.tipo = tipo;
+        
     }
 
     public Pelicula() {
@@ -85,10 +93,23 @@ public class Pelicula {
         this.genero = genero;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
-        return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", a\u00f1oEstreno=" + añoEstreno + ", cantidad=" + cantidad + ", genero=" + genero + '}';
+        return "Pelicula{" + "idPelicula=" + idPelicula + ", titulo=" + titulo + ", director=" + director + ", a\u00f1oEstreno=" + añoEstreno + ", cantidad=" + cantidad + ", genero=" + genero + ", tipo=" + tipo + '}';
     }
+
+   
     
+
+
+   
     
 }

@@ -15,26 +15,23 @@ public class Alquiler {
     private String fecha;
     private int total;
     private MetodoPago metodoPago;
-    private int montoPagado;
-    private int vuelto;
+    
 
-    public Alquiler(int idAlquiler, Socio socio, String fecha, int total, MetodoPago metodoPago, int montoPagado, int vuelto) {
+    public Alquiler(int idAlquiler, Socio socio, String fecha, int total, MetodoPago metodoPago) {
         this.idAlquiler = idAlquiler;
         this.socio = socio;
         this.fecha = fecha;
         this.total = total;
         this.metodoPago = metodoPago;
-        this.montoPagado = montoPagado;
-        this.vuelto = vuelto;
+        
     }
 
-    public Alquiler(Socio socio, String fecha, int total, MetodoPago metodoPago, int montoPagado, int vuelto) {
+    public Alquiler(Socio socio, String fecha, int total, MetodoPago metodoPago) {
         this.socio = socio;
         this.fecha = fecha;
         this.total = total;
         this.metodoPago = metodoPago;
-        this.montoPagado = montoPagado;
-        this.vuelto = vuelto;
+        
     }
 
     public Alquiler() {
@@ -80,25 +77,11 @@ public class Alquiler {
         this.metodoPago = metodoPago;
     }
 
-    public int getMontoPagado() {
-        return montoPagado;
-    }
-
-    public void setMontoPagado(int montoPagado) {
-        this.montoPagado = montoPagado;
-    }
-
-    public int getVuelto() {
-        return vuelto;
-    }
-
-    public void setVuelto(int vuelto) {
-        this.vuelto = vuelto;
-    }
+    
 
     @Override
     public String toString() {
-        return "Alquiler{" + "idAlquiler=" + idAlquiler + ", socio=" + socio + ", fecha=" + fecha + ", total=" + total + ", metodoPago=" + metodoPago + ", montoPagado=" + montoPagado + ", vuelto=" + vuelto + '}';
+        return "Alquiler" + "idAlquiler=" + idAlquiler + ", socio=" + socio + ", fecha=" + fecha + ", total=" + total + ", metodoPago=" + metodoPago;
     }
     
     

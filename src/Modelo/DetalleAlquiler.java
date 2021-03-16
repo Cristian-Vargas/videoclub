@@ -12,20 +12,23 @@ package Modelo;
 public class DetalleAlquiler {
     private int idDetalleAlquiler;
     private Alquiler alquiler;
-    private PrecioXPelicula precioXPelicula;
-    private int subtotal;
+    private Pelicula pelicula;
+    private Precio precio;
+    private String estado;
 
-    public DetalleAlquiler(int idDetalleAlquiler, Alquiler alquiler, PrecioXPelicula precioXPelicula, int subtotal) {
+    public DetalleAlquiler(int idDetalleAlquiler, Alquiler alquiler, Pelicula pelicula, Precio precio, String estado) {
         this.idDetalleAlquiler = idDetalleAlquiler;
         this.alquiler = alquiler;
-        this.precioXPelicula = precioXPelicula;
-        this.subtotal = subtotal;
+        this.pelicula = pelicula;
+        this.precio = precio;
+        this.estado = estado;
     }
 
-    public DetalleAlquiler(Alquiler alquiler, PrecioXPelicula precioXPelicula, int subtotal) {
+    public DetalleAlquiler(Alquiler alquiler, Pelicula pelicula, Precio precio, String estado) {
         this.alquiler = alquiler;
-        this.precioXPelicula = precioXPelicula;
-        this.subtotal = subtotal;
+        this.pelicula = pelicula;
+        this.precio = precio;
+        this.estado = estado;
     }
 
     public DetalleAlquiler() {
@@ -47,26 +50,35 @@ public class DetalleAlquiler {
         this.alquiler = alquiler;
     }
 
-    public PrecioXPelicula getPrecioXPelicula() {
-        return precioXPelicula;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
 
-    public void setPrecioXPelicula(PrecioXPelicula precioXPelicula) {
-        this.precioXPelicula = precioXPelicula;
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 
-    public int getSubtotal() {
-        return subtotal;
+    public Precio getPrecio() {
+        return precio;
     }
 
-    public void setSubtotal(int subtotal) {
-        this.subtotal = subtotal;
+    public void setPrecio(Precio precio) {
+        this.precio = precio;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "DetalleAlquiler{" + "idDetalleAlquiler=" + idDetalleAlquiler + ", alquiler=" + alquiler + ", precioXPelicula=" + precioXPelicula + ", subtotal=" + subtotal + '}';
+        return "DetalleAlquiler{" + "idDetalleAlquiler=" + idDetalleAlquiler + ", alquiler=" + alquiler + ", pelicula=" + pelicula + ", precio=" + precio + ", estado=" + estado + '}';
     }
+
     
     
 }

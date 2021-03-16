@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
 import Controlador.GestorBD;
@@ -10,25 +5,23 @@ import Modelo.Socio;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author Dell
- */
 public class frmSocios extends javax.swing.JFrame {
 
     FondoPanel fondo = new FondoPanel();
     private Socio socio;
 
+    //<------ CONSTRUCTORES ------>
+    // 1- Nuevo socio.
     public frmSocios() {
-
         this.setContentPane(fondo);
         initComponents();
         limpiarCampos();
-
     }
 
+    // 2- Modificar socio.
     //NOTA: Constructor creado con la finalidad de reutilizar el formulario para modificar un socio.
     public frmSocios(Socio s) {
+        this.setContentPane(fondo);
         initComponents();
         lblTitulo.setText("Actualice la información");
         lblDescripcion.setText("Complete con los datos actuales del socio.");
@@ -45,7 +38,7 @@ public class frmSocios extends javax.swing.JFrame {
         txtEmail.setText(s.getEmail());
     }
 
-    //1- METODO: limpiar campos.
+    //<------ METODO: LIMPIAR CAMPOS ------>
     private void limpiarCampos() {
         txtNombre.setText(null);
         txtApellido.setText(null);
@@ -54,8 +47,10 @@ public class frmSocios extends javax.swing.JFrame {
         txtEmail.setText(null);
     }
 
-    //2-METODO: boton guardar y modificar segun corresponda
+    //<------ BOTONES ------>
+    // 1 - Boton guardar o mofificar segun corresponda.
     private void guardarModificarSocio() {
+
         if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDni.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Los campos deben estar completos.", "Datos incompletos.", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -73,19 +68,20 @@ public class frmSocios extends javax.swing.JFrame {
                 //insertar nuevo socio
                 gestorBD.insertarSocio(s);
                 //Aviso de nuevo socio agregado
-                JOptionPane.showMessageDialog(null, "El socio se ha agregado correctamente.", "Socio agregado.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El socio ha sido agregado correctamente.", "Socio agregado.", JOptionPane.INFORMATION_MESSAGE);
             } else {   //Modificar socio seleccionado en la lista
                 s.setIdSocio(socio.getIdSocio());
                 gestorBD.modificarSocio(s);
                 //Aviso de socio modificado.
-                JOptionPane.showMessageDialog(null, "Los datos del socio se han actualizado correctamente.", "Socio actualizado.", JOptionPane.INFORMATION_MESSAGE);
-            }
+                JOptionPane.showMessageDialog(null, "La informacion ha sido actualizada correctamente.", "Socio actualizado.", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                frmListaSocios ventana = new frmListaSocios();
+                ventana.setVisible(true);
 
+            }
             //INVOCAR METODO: limpiar campos.
             limpiarCampos();
-
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -150,7 +146,7 @@ public class frmSocios extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Telefono:");
+        jLabel3.setText("Teléfono:");
 
         jLabel4.setFont(new java.awt.Font("Meiryo UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -161,16 +157,31 @@ public class frmSocios extends javax.swing.JFrame {
                 txtDniActionPerformed(evt);
             }
         });
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniKeyTyped(evt);
+            }
+        });
 
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
             }
         });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
             }
         });
 
@@ -187,7 +198,7 @@ public class frmSocios extends javax.swing.JFrame {
 
         btnListarClientes.setFont(new java.awt.Font("Meiryo UI", 1, 12)); // NOI18N
         btnListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Iconos/botonListaSocios.png"))); // NOI18N
-        btnListarClientes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnListarClientes.setBorder(new javax.swing.border.MatteBorder(null));
         btnListarClientes.setBorderPainted(false);
         btnListarClientes.setPreferredSize(new java.awt.Dimension(60, 60));
         btnListarClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -254,13 +265,13 @@ public class frmSocios extends javax.swing.JFrame {
                             .addGroup(panelInsertarSocioLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(btnListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addGroup(panelInsertarSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInsertarSocioLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(20, 20, 20)))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(panelInsertarSocioLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(panelInsertarSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,9 +324,9 @@ public class frmSocios extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(475, Short.MAX_VALUE)
+                .addContainerGap(450, Short.MAX_VALUE)
                 .addComponent(panelInsertarSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +344,7 @@ public class frmSocios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
@@ -357,6 +368,55 @@ public class frmSocios extends javax.swing.JFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
+
+        //VALIDACION: Solo acepta numeros
+        char validar = evt.getKeyChar();
+
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(rootPane, "Solo puede ingresar valores numericos.", "Valores númericos", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (Character.isWhitespace(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "No puede dejar espacios en blanco", "Espacios", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtDniKeyTyped
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        //VALIDACION: No acepta espacio
+        char validar = evt.getKeyChar();
+
+        if (Character.isWhitespace(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "No puede dejar espacios en blanco", "Espacios", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtEmailKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char validar = evt.getKeyChar();
+        if (Character.isLetter(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "Solo puede ingresar valores númericos.", "Valores númericos", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (Character.isWhitespace(validar)) {
+            getToolkit().beep();
+            evt.consume();
+
+            JOptionPane.showMessageDialog(null, "Solo puede ingresar valores númericos.", "Valores númericos", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -415,30 +475,24 @@ public class frmSocios extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
-//Imagen de fondo
+    //<------ IMAGEN DE FONDO ------>
+    // 1- Fondo Jframe
     class FondoPanel extends JPanel {
 
         private Image imagen;
+        private Image imagen1;
 
         @Override
         public void paint(Graphics g) {
-            imagen = new ImageIcon(getClass().getResource("")).getImage();
-
-            g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-
+            imagen = new ImageIcon(getClass().getResource("/imagenes/fondoAltaSocio.png")).getImage();
+            imagen1 = new ImageIcon(getClass().getResource("/imagenes/fondoModificarSocio.png")).getImage();
+            if (socio == null) {
+                g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+            } else {
+                g.drawImage(imagen1, 0, 0, getWidth(), getHeight(), this);
+            }
             setOpaque(false);
-
             super.paint(g);
         }
     }
-
-    //Icono
-    @Override
-    public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().
-                getImage(ClassLoader.getSystemResource("Imagenes/Iconos/iconoIndex.png"));
-
-        return retValue;
-    }
-
 }

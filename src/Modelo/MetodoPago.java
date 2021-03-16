@@ -44,7 +44,7 @@ public class MetodoPago {
 
     @Override
     public String toString() {
-        return "MetodoPago{" + "idMetodoPago=" + idMetodoPago + ", metodoPago=" + metodoPago + '}';
+        return metodoPago;
     }
     
     

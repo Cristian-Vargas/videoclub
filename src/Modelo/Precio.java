@@ -11,21 +11,21 @@ package Modelo;
  */
 public class Precio {
     private int idPrecio;
-    private String tipo;
-    private int precio;
-
-    public Precio(int idPrecio, String tipo, int precio) {
-        this.idPrecio = idPrecio;
-        this.tipo = tipo;
-        this.precio = precio;
-    }
-
-    public Precio(String tipo, int precio) {
-        this.tipo = tipo;
-        this.precio = precio;
-    }
+    private int precioEstreno;
+    private int precioComun;
 
     public Precio() {
+    }
+
+    public Precio(int precioEstreno, int precioComun) {
+        this.precioEstreno = precioEstreno;
+        this.precioComun = precioComun;
+    }
+    
+    public Precio(int idPrecio, int precioEstreno, int precioComun) {
+        this.idPrecio = idPrecio;
+        this.precioEstreno = precioEstreno;
+        this.precioComun = precioComun;
     }
 
     public int getIdPrecio() {
@@ -36,27 +36,24 @@ public class Precio {
         this.idPrecio = idPrecio;
     }
 
-    public String getTipo() {
-        return tipo;
+    public int getPrecioEstreno() {
+        return precioEstreno;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setPrecioEstreno(int precioEstreno) {
+        this.precioEstreno = precioEstreno;
     }
 
-    public int getPrecio() {
-        return precio;
+    public int getPrecioComun() {
+        return precioComun;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setPrecioComun(int precioComun) {
+        this.precioComun = precioComun;
     }
 
     @Override
     public String toString() {
-        return "Precio{" + "idPrecio=" + idPrecio + ", tipo=" + tipo + ", precio=" + precio + '}';
+        return "Precio{" + "idPrecio=" + idPrecio + ", precioEstreno=" + precioEstreno + ", precioComun=" + precioComun + '}';
     }
-    
-    
-    
 }
